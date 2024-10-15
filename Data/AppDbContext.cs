@@ -1,5 +1,6 @@
 using Data.Models;
 using Microsoft.EntityFrameworkCore;
+using TodoApi.Data.Models;
 
 namespace Data{
     public class AppDbContext:DbContext{
@@ -8,5 +9,9 @@ namespace Data{
         }
 
         public DbSet<Book> Books { get; set; }
+
+        public DbSet<Author> Authors { get; set; }
+
+        public DbSet<Publisher> Publishers { get; set; }
     }
 }

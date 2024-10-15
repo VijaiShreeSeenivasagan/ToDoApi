@@ -1,3 +1,4 @@
+
 namespace Data.Models{
     public class Book{
         public int Id { get; set; }
@@ -10,5 +11,6 @@ namespace Data.Models{
         public required string Author { get; set; }
         public required string Genre { get; set; }
         public DateTime DateAdded { get; set; }
+        public IEnumerable<object> Book_Authors { get; internal set; }
     }
 }
