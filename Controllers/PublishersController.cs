@@ -25,7 +25,7 @@ namespace TodoApi.Controllers
         public IActionResult GetAllPublishers(string sortBy , string searchString , int pageNumber){
            
             try{
-                _logger.LogInformation("Log info");
+                _logger.LogInformation("Getting all publishers");
                  var _result = _publisherService.GetAllPublishers(sortBy , searchString , pageNumber);
             return Ok(_result);
             }

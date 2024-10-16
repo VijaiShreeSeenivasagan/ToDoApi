@@ -137,3 +137,9 @@ System.IO.IOException: Failed to bind to address https://127.0.0.1:7292: address
 ""ALTER TABLE [Books] ADD [PublisherId] int NULL;"
 10/16/2024 12:59:59 +05:30 [] - Failed executing DbCommand ("9"ms) [Parameters=[""], CommandType='Text', CommandTimeout='30']"
 ""ALTER TABLE [Books] ADD [PublisherId] int NULL;"
+10/16/2024 15:40:45 +05:30 [] - Log info
+10/16/2024 15:40:58 +05:30 [] - Log info
+10/16/2024 15:41:34 +05:30 [] - Log info
+10/16/2024 15:42:06 +05:30 [] - Log info
+10/16/2024 15:42:10 +05:30 [] - Log info
+10/16/2024 15:42:24 +05:30 [] - Log info
