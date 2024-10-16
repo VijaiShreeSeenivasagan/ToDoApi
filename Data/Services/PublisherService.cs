@@ -63,9 +63,9 @@ namespace TodoApi.Data.Services
         public PublisherWithBooksAndAuthorsVM GetPublisherData(int publisherId){
             var _publisherData = _context.Publishers.Where(n => n.Id == publisherId).Select(n => new PublisherWithBooksAndAuthorsVM(){
                 Name = n.Name ,
-                BookAuthors = n.Books.Select(b => new BookAuthorVM(){
-                    BookName = b.Title,
-                    BookAuthors = ((List<Book_Author>)b.Book_Authors).Select(a => a.Author.FullName).ToList()
+                BookAuthors = n.Books.Select(n => new BookAuthorVM(){
+                    BookName = n.Title,
+                    BookAuthors = n.Book_Authors.Select(n => n.Author.FullName).ToList()
                 }).ToList()
             }).FirstOrDefault();
         

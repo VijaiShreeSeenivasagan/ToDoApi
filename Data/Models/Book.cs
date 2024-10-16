@@ -1,4 +1,6 @@
 
+using TodoApi.Data.Models;
+
 namespace Data.Models{
     public class Book{
         public int Id { get; set; }
@@ -8,9 +10,13 @@ namespace Data.Models{
         public DateTime? DateRead { get; set; }
         public int? Rate { get; set; }
         public required string CoverUrl { get; set; }
-        public required string Author { get; set; }
         public required string Genre { get; set; }
         public DateTime DateAdded { get; set; }
-        public IEnumerable<object> Book_Authors { get; internal set; }
+
+        //navigation properties
+        public int? PublisherId { get; set; }
+        public Publisher Publisher { get; set; }
+        public List<Book_Author> Book_Authors { get; set; }
+        
     }
 }

@@ -6,8 +6,11 @@ namespace Data.ViewModels{
         public DateTime? DateRead { get; set; }
         public int? Rate { get; set; }
         public required string CoverUrl { get; set; }
-        public required string Author { get; set; }
         public required string Genre { get; set; }
+
+        public int? PublisherId { get; set; }
+
+        public List<int> AuthorIds { get; set; }
 
     }
 }

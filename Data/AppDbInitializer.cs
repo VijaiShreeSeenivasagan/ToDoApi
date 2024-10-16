@@ -18,7 +18,6 @@ namespace Data{
                         DateRead = DateTime.Now.AddDays(-10),
                         Rate = 4,
                         Genre = "Biography",
-                        Author = "First Author",
                         CoverUrl = "https....",
                         DateAdded = DateTime.Now
                     },
@@ -27,7 +26,6 @@ namespace Data{
                         Description = "Book2",
                         isRead = false,
                         Genre = "Biography",
-                        Author = "First Author",
                         CoverUrl = "https....",
                         DateAdded = DateTime.Now
                     }

@@ -4,6 +4,7 @@ using Data;
 using Microsoft.OpenApi.Models;
 using Data.Services;
 using TodoApi.Data.Services;
+using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +13,18 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//builder.Configuration.AddJsonFile("appsettings.json").Build();
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+builder.Host.UseSerilog();
+//builder.Services.AddSerilog();
+
+// Log.Logger = new LoggerConfiguration()
+//     .WriteTo.File("Logs/log.txt")
+//     .CreateLogger();
+// builder.Services.AddSerilog();
+
 
 builder.Services.AddDbContext<Data.AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));

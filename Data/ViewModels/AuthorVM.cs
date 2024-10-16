@@ -14,6 +14,8 @@ namespace TodoApi.Data.ViewModels
     {
         // Properties of the AuthorWithBooksVM class
         public required string FullName { get; set; }
-        public List<string> BookTitles { get; internal set; }
+
+        public required List<string> BookTitles { get; set; }
+    
     }
 }

@@ -3,6 +3,7 @@ using Data.Models;
 
 namespace TodoApi.Data.Models
 {
+    //rep many to many rltnship btwn author and book and joins both the tables.
     public class Book_Author
     {
         public int Id { get; set; }

@@ -4,6 +4,7 @@ using Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TodoApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241015104919_newMigration")]
+    partial class newMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -109,7 +112,7 @@ namespace TodoApi.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("Book_Authors");
+                    b.ToTable("Book_Author");
                 });
 
             modelBuilder.Entity("TodoApi.Data.Models.Publisher", b =>
@@ -131,11 +134,9 @@ namespace TodoApi.Migrations
 
             modelBuilder.Entity("Data.Models.Book", b =>
                 {
-                    b.HasOne("TodoApi.Data.Models.Publisher", "Publisher")
+                    b.HasOne("TodoApi.Data.Models.Publisher", null)
                         .WithMany("Books")
                         .HasForeignKey("PublisherId");
-
-                    b.Navigation("Publisher");
                 });
 
             modelBuilder.Entity("TodoApi.Data.Models.Book_Author", b =>
