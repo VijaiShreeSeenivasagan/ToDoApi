@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace TodoApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241015104919_newMigration")]
-    partial class newMigration
+    [Migration("20241017092527_addlogTable")]
+    partial class addlogTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,10 +32,6 @@ namespace TodoApi.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Author")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CoverUrl")
                         .IsRequired()
@@ -112,7 +108,43 @@ namespace TodoApi.Migrations
 
                     b.HasIndex("BookId");
 
-                    b.ToTable("Book_Author");
+                    b.ToTable("Book_Authors");
+                });
+
+            modelBuilder.Entity("TodoApi.Data.Models.Log", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Exception")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Level")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MessageTemplate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Properties")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Logs");
                 });
 
             modelBuilder.Entity("TodoApi.Data.Models.Publisher", b =>
@@ -134,9 +166,11 @@ namespace TodoApi.Migrations
 
             modelBuilder.Entity("Data.Models.Book", b =>
                 {
-                    b.HasOne("TodoApi.Data.Models.Publisher", null)
+                    b.HasOne("TodoApi.Data.Models.Publisher", "Publisher")
                         .WithMany("Books")
                         .HasForeignKey("PublisherId");
+
+                    b.Navigation("Publisher");
                 });
 
             modelBuilder.Entity("TodoApi.Data.Models.Book_Author", b =>

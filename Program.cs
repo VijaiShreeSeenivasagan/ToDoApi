@@ -5,8 +5,8 @@ using Microsoft.OpenApi.Models;
 using Data.Services;
 using TodoApi.Data.Services;
 using Serilog;
+using TodoApi.Execptions;
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -46,6 +46,8 @@ if (app.Environment.IsDevelopment())
 });
 }
 
+//configure exception handling
+app.ConfigureExceptionHandler();
 
 app.UseHttpsRedirection();
 
