@@ -47,7 +47,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //configure exception handling
-app.ConfigureExceptionHandler();
+app.ConfigureExceptionHandler(app.Services.GetRequiredService<ILoggerFactory>());
 
 app.UseHttpsRedirection();
 
