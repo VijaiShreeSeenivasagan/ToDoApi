@@ -27,11 +27,12 @@ builder.Host.UseSerilog();
 
 
 builder.Services.AddDbContext<Data.AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString")).EnableSensitiveDataLogging());
 //Configure Services
 builder.Services.AddTransient<BooksService>();
 builder.Services.AddTransient<AuthorService>();
 builder.Services.AddTransient<PublisherService>();
+builder.Services.AddTransient<LogsService>();
 var app = builder.Build();
 //Initialise and seed database
 //AppDbInitializer.Seed(app);

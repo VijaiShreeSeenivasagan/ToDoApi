@@ -10,7 +10,7 @@ namespace TodoApi.Data.Models
         public string Level { get; set; }
         
         public DateTime Timestamp { get; set; }
-        public string Exception { get; set; }
+        public string? Exception { get; set; }
         public string Properties { get; set; }//XML propoerties
     
     }
